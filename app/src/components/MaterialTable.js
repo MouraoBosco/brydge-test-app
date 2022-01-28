@@ -19,12 +19,12 @@ const options = {
     hour: 'numeric', minute: 'numeric', second: 'numeric',
     hour12: false,
     timeZone: "America/Sao_Paulo"
-  };
+};
 
 function formatDate(date) {
-    
+
     let correctDateFormat = new Date(date);
-    
+
     return correctDateFormat = new Intl.DateTimeFormat('pt-BR', options).format(correctDateFormat)
 }
 
@@ -94,33 +94,40 @@ function Row(props) {
 
 export default function CollapsibleTable(props) {
 
-const rows = props.data
+    const rows = props.data
 
     return (
-        <TableContainer component={Paper} style={{
+        <div style={{
+            
             display: 'flex',
             alignItems: 'center',
-            height: '100vh'
+            flexDirection: 'column'
         }}>
-            <Table aria-label="collapsible table">
-                <TableHead>
-                    <TableRow>
-                        <TableCell />
-                        <TableCell>Checkout nº</TableCell>
-                        <TableCell align="right">Cliente</TableCell>
-                        <TableCell align="right">Email do cliente</TableCell>
-                        <TableCell align="right">Endereço do cliente</TableCell>
-                        <TableCell align="right">Data / Hora da venda</TableCell>
-                        <TableCell align="right">Total (BRL)</TableCell>
-                        <TableCell align="right">Total (USD)</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {rows.map((row) => (
-                        <Row key={row.id} row={row} />
-                    ))}
-                </TableBody>
-            </Table>
-        </TableContainer>
+            <h4 className="hover-underline-animation" style={{marginRight: '45vw'}}> Brydge client checkouts</h4>
+            <TableContainer component={Paper} style={{
+                width: '90vw'
+            }}>
+                <Table aria-label="collapsible table">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell />
+                            <TableCell>Checkout nº</TableCell>
+                            <TableCell align="right">Cliente</TableCell>
+                            <TableCell align="right">Email do cliente</TableCell>
+                            <TableCell align="right">Endereço do cliente</TableCell>
+                            <TableCell align="right">Data / Hora da venda</TableCell>
+                            <TableCell align="right">Total (BRL)</TableCell>
+                            <TableCell align="right">Total (USD)</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {rows.map((row) => (
+                            <Row key={row.id} row={row} />
+                        ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+        </div>
+
     );
 }

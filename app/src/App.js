@@ -1,6 +1,7 @@
 import { render } from '@testing-library/react';
 import React from 'react';
 import './App.css';
+import './index.css';
 import MaterialTable from './components/MaterialTable';
 import axios from "axios"
 import enviroment from "./enviroment/Enviroment"
@@ -17,7 +18,7 @@ export default class App extends React.Component {
       .then(response => this.setState({checkoutList: response.data}))
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.getList()
   }
 
